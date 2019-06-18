@@ -1,0 +1,16 @@
+<div class="container">
+  <div>
+    <label for="first-input">{{counterStorageService.valueFirst}}</label>
+    <br>
+    <input id="first-input" type="number"
+           #firstElement [class.negative]="counterStorageService.valueFirst < 0"
+           [value]="counterStorageService.valueFirst">
+  </div>
+  <div>
+    <label for="second-input">{{counterStorageService.valueSecond}}</label>
+    <br>
+    <input id="second-input" type="number" #secondElement
+           [class.negative]="counterStorageService.valueSecond < 0"
+           [value]="counterStorageService.valueSecond">
+  </div>
+</div>
