@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, interval} from 'rxjs';
+import {BehaviorSubject, interval, Subscriber, Subscription} from 'rxjs';
 import {timeInterval} from 'rxjs/operators';
 import {enDefaultValues} from '../enums';
 
@@ -12,7 +12,7 @@ export class CounterStorageService {
   public valueFirst: number;
   public valueSecond: number;
 
-  private timer$;
+  private timer$: Subscription;
 
   constructor() {
     this.firstSubject.subscribe(data => this.valueFirst = data);
@@ -38,7 +38,7 @@ export class CounterStorageService {
     this.secondSubject.next(data);
   }
 
-  timer() {
+  start() {
     this.timer$ = interval(enDefaultValues.timerInterval)
         .pipe(timeInterval())
         .subscribe(() => {
@@ -49,7 +49,9 @@ export class CounterStorageService {
   }
 
   stop() {
-    this.timer$.unsubscribe();
+    if (this.timer$) {
+      this.timer$.unsubscribe();
+    }
   }
 
   reset() {

@@ -48,9 +48,9 @@ describe('ControlsComponent', () => {
   }));
 
   it(`should call start func in storage service`, fakeAsync(() => {
-    spyOn(counterStorageService, 'timer');
+    spyOn(counterStorageService, 'start');
     component.start();
-    expect(counterStorageService.timer).toHaveBeenCalled();
+    expect(counterStorageService.start).toHaveBeenCalled();
   }));
 
   it(`should call stop func in storage service`, fakeAsync(() => {

@@ -16,7 +16,7 @@ export class ControlsComponent implements OnInit {
 
   start() {
     this.startButton.nativeElement.disabled = true;
-    this.counterStorageService.timer();
+    this.counterStorageService.start();
   }
 
   stop() {
