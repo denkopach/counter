@@ -1,16 +1,16 @@
 <div class="container">
   <div>
-    <label for="first-input">{{counterStorageService.valueFirst}}</label>
+    <label for="first-input">{{valueFirst}}</label>
     <br>
     <input id="first-input" type="number"
-           #firstElement [class.negative]="counterStorageService.valueFirst < 0"
-           [value]="counterStorageService.valueFirst">
+           #firstElement [class.negative]="valueFirst < 0"
+           [value]="valueFirst">
   </div>
   <div>
-    <label for="second-input">{{counterStorageService.valueSecond}}</label>
+    <label for="second-input">{{valueSecond}}</label>
     <br>
     <input id="second-input" type="number" #secondElement
-           [class.negative]="counterStorageService.valueSecond < 0"
-           [value]="counterStorageService.valueSecond">
+           [class.negative]="valueSecond < 0"
+           [value]="valueSecond">
   </div>
 </div>

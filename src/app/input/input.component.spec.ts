@@ -33,7 +33,7 @@ describe('InputComponent', () => {
     component.firstElement.nativeElement.dispatchEvent(new KeyboardEvent('keyup', {}));
     fixture.detectChanges();
     tick(500);
-    expect(counterStorageService.valueFirst).toEqual(2);
+    expect(counterStorageService['firstSubject'].value).toEqual(2);
   }));
 
   it(`should change secondElement to 5`, fakeAsync(() => {
@@ -41,6 +41,6 @@ describe('InputComponent', () => {
     component.secondElement.nativeElement.dispatchEvent(new KeyboardEvent('keyup', {}));
     fixture.detectChanges();
     tick(500);
-    expect(counterStorageService.valueSecond).toEqual(5);
+    expect(counterStorageService['secondSubject'].value).toEqual(5);
   }));
 });

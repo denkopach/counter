@@ -27,27 +27,12 @@ describe('CounterStorageService', () => {
   });
 
   it(`should have valueFirst = -5`, () => {
-    expect(counterStorageService.valueFirst).toEqual(-5);
+    expect(counterStorageService['firstSubject'].value).toEqual(-5);
   });
 
   it(`should have valueSecond = 10`, () => {
-    expect(counterStorageService.valueSecond).toEqual(10);
+    expect(counterStorageService['secondSubject'].value).toEqual(10);
   });
-
-  // it(`should start, then stop, then reset counter`, fakeAsync(() => {
-  //   counterStorageService.start();
-  //   tick(1000);
-  //   expect(counterStorageService.valueSecond).toEqual(8);
-  //   expect(counterStorageService.valueFirst).toEqual(-4);
-  //   counterStorageService.stop();
-  //   tick(1000);
-  //   expect(counterStorageService.valueSecond).toEqual(8);
-  //   expect(counterStorageService.valueFirst).toEqual(-4);
-  //   counterStorageService.reset();
-  //   expect(counterStorageService.valueSecond).toEqual(10);
-  //   expect(counterStorageService.valueFirst).toEqual(-5);
-  //   discardPeriodicTasks();
-  // }));
 
   it(`should started timer and start increase and decrease methods`, fakeAsync(() => {
     spyOn(counterStorageService, 'increase');
@@ -64,8 +49,8 @@ describe('CounterStorageService', () => {
     counterStorageService.pushFirst(1);
     counterStorageService.pushSecond(2);
     counterStorageService.reset();
-    expect(counterStorageService.valueSecond).toEqual(10);
-    expect(counterStorageService.valueFirst).toEqual(-5);
+    expect(counterStorageService['secondSubject'].value).toEqual(10);
+    expect(counterStorageService['firstSubject'].value).toEqual(-5);
   }));
 
   it(`should stoped timer`, fakeAsync(() => {
@@ -78,12 +63,12 @@ describe('CounterStorageService', () => {
 
   it(`should increase valueFirst to -4`, fakeAsync(() => {
     counterStorageService.increase();
-    expect(counterStorageService.valueFirst).toEqual(-4);
+    expect(counterStorageService['firstSubject'].value).toEqual(-4);
   }));
 
   it(`should decrease valueFirst to 9`, fakeAsync(() => {
     counterStorageService.decrease();
-    expect(counterStorageService.valueSecond).toEqual(9);
+    expect(counterStorageService['secondSubject'].value).toEqual(9);
   }));
 
   it(`should nothing happen`, fakeAsync(() => {
